@@ -30,7 +30,7 @@ const ControlBar = () => {
   };
   
   const toggleScreen = async () => {
-    await hmsActions.setScreenShareEnabled(true);
+    await hmsActions.setScreenShareEnabled(!selectIsLocalScreenShared);
   }
 
   return (
@@ -81,7 +81,7 @@ const ControlBar = () => {
       <button
       className='text-xs uppercase tracking-wider bg-white py-1 px-2 rounded-lg shadow-lg text-iwhite ml-2 bg-red-600'
       onClick={() => {
-          hmsActions.leave();
+          isModerator ? hmsActions.endRoom(false, "session ended") : hmsActions.leave();
         }}
     >
      {
